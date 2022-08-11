@@ -2,4 +2,6 @@
 :root {
     --gridRow: 1;
     --gridColumns: 1;
+    background-color: aquamarine;
 }
+
