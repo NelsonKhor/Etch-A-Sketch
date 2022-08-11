@@ -1,0 +1,5 @@
+/* custom css properties */ 
+:root {
+    --gridRow: 1;
+    --gridColumns: 1;
+}
