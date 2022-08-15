@@ -25,35 +25,50 @@ function createGrid(rows, columns) {
         newDiv.style.backgroundColor = "white";
         gridContainer.appendChild(newDiv).className = "gridBox";
     }
+    setHoverEffect();
     
 }
 
-// Default grid size
-createGrid(16,16);
-
-// Hover to color
-const boxes = document.querySelectorAll('.gridBox');
-boxes.forEach((box) => {
-    box.addEventListener('mouseover', () => {
-        box.style.backgroundColor = "black";
-    });
-});
-
-// Function Reset Grid
+// Function: Reset Grid
 const resetBoard = document.getElementById('resetBoard');
 resetBoard.addEventListener('click', resetGrid);
 
 function resetGrid() {
+    const boxes = document.querySelectorAll('.gridBox');
     boxes.forEach((box) => {
         box.style.backgroundColor = "white";
     });
 }
 
+// Function: Hover to color
+function setHoverEffect() {
+    const boxes = document.querySelectorAll('.gridBox');
+    boxes.forEach((box) => {
+        box.addEventListener('mouseover', () => {
+            box.style.backgroundColor = "black";
+        });
+    });
+}
+
+// Function: Prompt user to input custom grid size
+const customBoard = document.getElementById('customBoard');
+customBoard.addEventListener('click', resetBoardSize);
+
+function resetBoardSize() {
+    let userInput = parseInt(prompt("Please enter desired board size (1-100 only):"));
+    if (userInput > 0 || userInput <= 100){
+        resetGrid();
+        while (gridContainer.hasChildNodes()) {
+            gridContainer.removeChild(gridContainer.firstChild);    // remove and readd boxes
+        }
+        createGrid(userInput,userInput);
+        setHoverEffect();
+    }
+}
 
 
-
-
-
+// Initializing: Default grid size
+createGrid(16,16);
 
 
 
