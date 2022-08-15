@@ -3,5 +3,19 @@
     --gridRow: 1;
     --gridColumns: 1;
     background-color: aquamarine;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+button {
+    margin: 0 5px 10px;
+    height: 30px;
+    width: auto;
+    background-color: azure;
+}
