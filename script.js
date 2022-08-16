@@ -23,7 +23,7 @@ function createGrid(rows, columns) {
         newDiv.style.height = `${boxHeight}px`;;
         newDiv.style.box = "border-box";
         newDiv.style.backgroundColor = `white`;
-        newDiv.dataset.color = "16777215";                            // for gradient
+        newDiv.dataset.color = "255";                            // rgb value for gradient
         gridContainer.appendChild(newDiv).className = "gridBox";
     }
     setHoverEffect();
@@ -101,15 +101,11 @@ function eraser() {
 function gradientMode() {
     const boxes = document.querySelectorAll('.gridBox');
     boxes.forEach((box) => {
-        if (box.dataset.color > 0) {
-            box.dataset.color = parseInt(box.dataset.color) - 1842204;
-            console.log(typeof parseInt(box.dataset.color));
-            let newColor = (box.dataset.color).toString(16);
-            console.log(typeof newColor);
-            box.addEventListener('mouseover', () => {
-                box.style.backgroundColor = '#' + newColor
-            });
-        }
+        box.addEventListener('mouseover', () => {
+            let rgbValue = box.dataset.color;
+            box.style.backgroundColor = "rgb(" + rgbValue + "," + rgbValue + "," + rgbValue + ")";
+            box.dataset.color -= 17;
+        });
     });
 }
 
