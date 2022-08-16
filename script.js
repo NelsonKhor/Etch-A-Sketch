@@ -29,10 +29,17 @@ function createGrid(rows, columns) {
     
 }
 
-// Function: Reset Grid
+// Buttons DOM
 const resetBoard = document.getElementById('resetBoard');
 resetBoard.addEventListener('click', resetGrid);
+const customBoard = document.getElementById('customBoard');
+customBoard.addEventListener('click', resetBoardSize);
+const blackMode = document.getElementById('blackColor');
+blackMode.addEventListener('click', setHoverEffect);
+const unicornMode = document.getElementById('randomColor');
+unicornMode.addEventListener('click', colorMode);
 
+// Function: Reset grid / Clear board
 function resetGrid() {
     const boxes = document.querySelectorAll('.gridBox');
     boxes.forEach((box) => {
@@ -50,22 +57,30 @@ function setHoverEffect() {
     });
 }
 
-// Function: Prompt user to input custom grid size
-const customBoard = document.getElementById('customBoard');
-customBoard.addEventListener('click', resetBoardSize);
-
+// Function: Prompt user to customize grid size
 function resetBoardSize() {
     let userInput = parseInt(prompt("Please enter desired board size (1-100 only):"));
-    if (userInput > 0 || userInput <= 100){
+    if (userInput > 0 && userInput <= 100){
         resetGrid();
         while (gridContainer.hasChildNodes()) {
-            gridContainer.removeChild(gridContainer.firstChild);    // remove and readd boxes
+            gridContainer.removeChild(gridContainer.firstChild);    // remove and re-add boxes
         }
         createGrid(userInput,userInput);
-        setHoverEffect();
+    } else {
+        alert('Invalid input: 1-100 only');
     }
 }
 
+// Function: Generate random color
+function colorMode() {
+    const boxes = document.querySelectorAll('.gridBox');
+    boxes.forEach((box) => {
+        let randomColor = Math.floor(Math.random()*16777215).toString(16); // generate random hex color code
+        box.addEventListener('mouseover', () => {
+            box.style.backgroundColor = '#' + randomColor;
+        });
+    });
+}
 
 // Initializing: Default grid size
 createGrid(16,16);
