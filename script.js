@@ -22,7 +22,8 @@ function createGrid(rows, columns) {
         newDiv.style.width = `${boxWidth}px`;
         newDiv.style.height = `${boxHeight}px`;;
         newDiv.style.box = "border-box";
-        newDiv.style.backgroundColor = "white";
+        newDiv.style.backgroundColor = `white`;
+        newDiv.dataset.color = "16777215";                            // for gradient
         gridContainer.appendChild(newDiv).className = "gridBox";
     }
     setHoverEffect();
@@ -34,10 +35,14 @@ const resetBoard = document.getElementById('resetBoard');
 resetBoard.addEventListener('click', resetGrid);
 const customBoard = document.getElementById('customBoard');
 customBoard.addEventListener('click', resetBoardSize);
+const eraseBoard = document.getElementById('eraser');
+eraseBoard.addEventListener('click', eraser);
 const blackMode = document.getElementById('blackColor');
 blackMode.addEventListener('click', setHoverEffect);
 const unicornMode = document.getElementById('randomColor');
 unicornMode.addEventListener('click', colorMode);
+const blackGradient = document.getElementById('blackGradient');
+blackGradient.addEventListener('click',gradientMode);
 
 // Function: Reset grid / Clear board
 function resetGrid() {
@@ -79,6 +84,32 @@ function colorMode() {
         box.addEventListener('mouseover', () => {
             box.style.backgroundColor = '#' + randomColor;
         });
+    });
+}
+
+// Function: Erase/Paint White
+function eraser() {
+    const boxes = document.querySelectorAll('.gridBox');
+    boxes.forEach((box) => {
+        box.addEventListener('mouseover', () => {
+            box.style.backgroundColor = "white";
+        });
+    });
+}
+
+// Function: Black gradient color
+function gradientMode() {
+    const boxes = document.querySelectorAll('.gridBox');
+    boxes.forEach((box) => {
+        if (box.dataset.color > 0) {
+            box.dataset.color = parseInt(box.dataset.color) - 1842204;
+            console.log(typeof parseInt(box.dataset.color));
+            let newColor = (box.dataset.color).toString(16);
+            console.log(typeof newColor);
+            box.addEventListener('mouseover', () => {
+                box.style.backgroundColor = '#' + newColor
+            });
+        }
     });
 }
 
