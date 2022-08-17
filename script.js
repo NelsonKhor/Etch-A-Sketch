@@ -104,7 +104,7 @@ function gradientMode() {
         box.addEventListener('mouseover', () => {
             let rgbValue = box.dataset.color;
             box.style.backgroundColor = "rgb(" + rgbValue + "," + rgbValue + "," + rgbValue + ")";
-            box.dataset.color -= 17;
+            box.dataset.color -= 17;                                    // make it darker
         });
     });
 }
