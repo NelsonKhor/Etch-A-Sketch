@@ -4,7 +4,7 @@ A project built with vanilla JavaScript that resembles the mechanical drawing to
 
 ## Link
 
-[Link to the project](https://nelsonkhor.github.io/odin-etch-a-sketch/)
+[Link to the project](https://nelsonkhor.github.io/Etch-A-Sketch/)
 
 ## Features
 
