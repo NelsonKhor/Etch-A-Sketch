@@ -91,8 +91,8 @@ function resetBoardSize() {
 function colorMode() {
     const boxes = document.querySelectorAll('.gridBox');
     boxes.forEach((box) => {
-        let randomColor = Math.floor(Math.random()*16777215).toString(16); // generate random hex color code
         box.addEventListener('mouseover', () => {
+            let randomColor = Math.floor(Math.random()*16777215).toString(16); // generate random hex color code
             box.style.backgroundColor = '#' + randomColor;
         });
     });
@@ -105,6 +105,7 @@ function eraser() {
         box.addEventListener('mouseover', () => {
             box.dataset.color = "255";
             let rgbValue = box.dataset.color;
+            console.log('clear');
             box.style.backgroundColor = "rgb(" + rgbValue + "," + rgbValue + "," + rgbValue + ")";
         });
     });
@@ -115,9 +116,14 @@ function gradientMode() {
     const boxes = document.querySelectorAll('.gridBox');
     boxes.forEach((box) => {
         box.addEventListener('mouseover', () => {
+            if (box.dataset.color > 0) {
+                console.log('passed by here');
+                console.log('before: ',box.dataset.color);
+                box.dataset.color -= 17;
+                console.log('after:',box.dataset.color);
+            }                                    // make it darker
             let rgbValue = box.dataset.color;
             box.style.backgroundColor = "rgb(" + rgbValue + "," + rgbValue + "," + rgbValue + ")";
-            box.dataset.color -= 17;                                    // make it darker
         });
     });
 }
