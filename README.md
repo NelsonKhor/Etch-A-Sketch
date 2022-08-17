@@ -29,5 +29,5 @@ The project is **Completed**. However, there are some additional features that c
 
 ## Author
 
-Nelson Khor &copy; 2022
+Nelson Khor &copy; 2022  
 Version 1.0
