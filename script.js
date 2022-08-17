@@ -10,6 +10,16 @@ gridContainer.style.gridTemplateColumns = "repeat(var(--gridColumns), 1fr)";
 gridContainer.style.gap = "0";
 gridContainer.style.box = "border-box";
 
+// Function: media query for drawing board
+// const mobileScreenSize = window.matchMedia("(max-width: 570px)");
+// adjustScreen(mobileScreenSize);
+// function adjustScreen(mobileScreenSize) {
+//     if (mobileScreenSize.matches) {
+//         gridContainer.style.height = "100%";
+//         gridContainer.style.width = "100%";
+//     }
+// }
+
 // Function: Build the grid with CSS Grid
 function createGrid(rows, columns) {
     const boxWidth = 560/rows;
@@ -49,6 +59,7 @@ function resetGrid() {
     const boxes = document.querySelectorAll('.gridBox');
     boxes.forEach((box) => {
         box.style.backgroundColor = "white";
+        box.dataset.color = "255";
     });
 }
 
@@ -92,7 +103,9 @@ function eraser() {
     const boxes = document.querySelectorAll('.gridBox');
     boxes.forEach((box) => {
         box.addEventListener('mouseover', () => {
-            box.style.backgroundColor = "white";
+            box.dataset.color = "255";
+            let rgbValue = box.dataset.color;
+            box.style.backgroundColor = "rgb(" + rgbValue + "," + rgbValue + "," + rgbValue + ")";
         });
     });
 }

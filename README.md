@@ -23,9 +23,13 @@ A project built with vanilla JavaScript that resembles the mechanical drawing to
 
 ## Project Status/Improvement
 
-The project is **Completed**. However, there are some additional features that can be considered to implement in the future:
+The project is **MOSTLY COMPLETED**. However, there are some additional features that can be considered to implement in the future:
 - Click-and-hold to draw: instead of just hovering across the board, user can choose to only draw when the mouse button is hold down
 - Mobile responsiveness: being able to draw on the mobile devices
+
+## Issues/Bugs
+
+1. "White to Black" button feature (black gradient) doesn't work properly on div that has been erased by "Erase" button (17/08/2022)
 
 ## Author
 
